@@ -34,7 +34,7 @@ exports.signup = async function (req, res) {
 
         const createdata = await UM.create({ ...req.body, password: hashedPassword });
 
-        const token = jwt.sign({ id: createdata._id }, 'YP');
+        const token = jwt.sign({ id: createdata._id }, process.env.Secure_key);
 
         res.status(201).json({
             status: "success",
